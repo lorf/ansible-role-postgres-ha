@@ -60,12 +60,18 @@
     path: /etc/security/access.conf
     regexp: '^\+\s*:\s*hacluster\s*:'
 
+- name: create HA cluster group
+  group:
+    name: haclient
+    state: present
+
 - name: setup hacluster password
   user:
     name: hacluster
     state: present
     update_password: always
     password: "{{ postgres_ha_cluster_ha_password_hash }}"
+    group: haclient
 
 - name: setup cluster auth
   shell: pcs cluster auth {{ ansible_play_batch | join( " ") }} -u hacluster -p "{{ postgres_ha_cluster_ha_password }}"
