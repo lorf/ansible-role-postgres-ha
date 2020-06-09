@@ -51,6 +51,15 @@
 - name: service pcsd start                         
   service: name=pcsd state=started enabled=yes
 
+- name: allow hacluster user to login
+  lineinfile:
+    backup: yes
+    firstmatch: yes
+    insertbefore: '^\s*-\s*:\s*ALL\s*:'
+    line: "+ : hacluster : ALL"
+    path: /etc/security/access.conf
+    regexp: '^\+\s*:\s*hacluster\s*:'
+
 - name: setup hacluster password
   user:
     name: hacluster
