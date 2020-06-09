@@ -70,7 +70,8 @@
     name: hacluster
     state: present
     update_password: always
-    password: "{{ postgres_ha_cluster_ha_password_hash }}"
+    # format() works around https://github.com/ansible/ansible/issues/24425
+    password: "{{ '%s' | format(postgres_ha_cluster_ha_password) | password_hash('sha512', 65534 | random(seed=inventory_hostname) | string) }}"
     group: haclient
 
 - name: setup cluster auth

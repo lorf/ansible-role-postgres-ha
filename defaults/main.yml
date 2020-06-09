@@ -16,7 +16,6 @@ postgres_ha_monitor_interval_pgslave: '16s'                # frequency of checki
 postgres_ha_pg_repl_user: replicator                       # database user used for replication
 postgres_ha_pg_repl_pass: rybKath3KeckGov1
 postgres_ha_cluster_ha_password: 'fropFav7epAbOch2'        # password for joining the pcs cluster
-postgres_ha_cluster_ha_password_hash: '$6$MHAki4YS$Nk7O3FEC2G.INznoSUj4ByFgdwFJ8mcI9.Ks3XAoLLe9f9GB36G8hZe9o8ygDySJwvnLVCn0LGPzcOapK42/A/'  # fropFav7epAbOch2
 
 # postgres config
 postgres_ha_pg_version: 9.6

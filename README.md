@@ -63,11 +63,6 @@ Variables that must be changed:
 - `postgres_ha_cluster_vip`                -    a floating IP address that travels with master database
 - `postgres_ha_pg_repl_pass`               -    password for replicating postgresql data
 - `postgres_ha_cluster_ha_password`        -    password for cluster config replication
-- `postgres_ha_cluster_ha_password_hash`   -    password hash of postgres_ha_cluster_ha_password
-
-Password hash can be generated for example by this command:
-
-`python -c 'import crypt; print(crypt.crypt("my_cluster_ha_password", crypt.mksalt(crypt.METHOD_SHA512)))'`
 
 Dependencies
 ------------
@@ -93,7 +88,6 @@ Two settings are required:
         postgres_ha_cluster_vip: 10.10.10.10
         postgres_ha_pg_repl_pass: MySuperSecretDBPass
         postgres_ha_cluster_ha_password: AnotherSuperSecretPass1234
-        postgres_ha_cluster_ha_password_hash: '$6$mHeZ7/LD1y.........7VJYu.'
       pre_tasks:
         - name: disable firewall
           service: name=firewalld state=stopped enabled=no
